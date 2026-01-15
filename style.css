@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html {
+    --bleu-principal: #3168ff;
+    --bleu-fonce: #0b2c6d;
+    --bleu-clair: #5fa8ff;
+    --blanc-pur: #fff;
+    --blanc-ancre: #f4f7fb;
+    --gris-texte: #2e2e2e;
+    --argent: #c9ced6;
+    --or-doux: #d4af37;
+    --success: #2ecc71;
+    --warnings: #f1c40f;
+    --danger: #e74c3c; 
+}
+
+body {
+    background-color: var(--blanc-ancre);
+    color: var(--gris-texte);
+    font-family: poppins, sans-serif;
+}
+
+header {
+    background-color: var(--bleu-principal);
+    display: flex;
+    justify-content: flex-end; /* POUSSE LE HAMBURGER À DROITE */
+}
+
+
+header h2 {
+    color: var(--gris-texte);
+}
+
+
+header {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem 2rem;
+        position: relative;
+        display: flex;
+        justify-content: flex-end; /* POUSSE LE HAMBURGER À DROITE */
+    }
+
+    /* Le label remplace visuellement la checkbox
+        cursor: pointer = indique que c'est cliquable */
+    .hamburger {
+        display: block;
+        width: 40px;
+        height: 30px;
+        cursor: pointer;
+        position: relative;
+        z-index: 1000;
+    }
+
+    /* Les 3 barres du hamburger (☰)
+        position: absolute permet de les empiler verticalement */
+    .hamburger span {
+        display: block;
+        position: absolute;
+        height: 4px;
+        width: 100%;
+        background: white;
+        border-radius: 3px;
+        
+        /* transition = animation fluide lors du changement */
+        transition: all 0.3s ease;
+    }
+
+    /* Positionnement vertical des 3 barres */
+    .hamburger span:nth-child(1) { top: 0; }     /* Barre du haut */
+    .hamburger span:nth-child(2) { top: 13px; }  /* Barre du milieu */
+    .hamburger span:nth-child(3) { top: 26px; }  /* Barre du bas */
+
+    /* ========================================
+        ÉTAPE 3 : ANIMER EN CROIX (X)
+        ======================================== */
+    
+    /* LE SÉLECTEUR MAGIQUE : #menu-cache:checked + .hamburger
+        
+        Décomposition :
+        - #menu-cache       = la checkbox
+        - :checked           = QUAND elle est cochée
+        - +                  = sélectionne l'élément juste APRÈS
+        - .hamburger span    = les barres du hamburger
+        
+        Résultat : Quand la checkbox est cochée, 
+                    transforme les barres en X */
+    
+    #menu-cache:checked + .hamburger span:nth-child(1) {
+        transform: rotate(45deg);  /* Tourne de 45° */
+        top: 13px;                 /* Centre verticalement */
+    }
+
+    #menu-cache:checked + .hamburger span:nth-child(2) {
+        opacity: 0;  /* Cache la barre du milieu */
+    }
+
+    #menu-cache:checked + .hamburger span:nth-child(3) {
+        transform: rotate(-45deg);  /* Tourne de -45° */
+        top: 13px;                  /* Centre verticalement */
+    }
+
+    /* ========================================
+        ÉTAPE 4 : LE MENU DE NAVIGATION
+        ======================================== */
+    
+    nav {
+        position: fixed;
+        top: 0;
+        right: -320px;  /* CACHÉ À DROITE (au lieu de left) */
+        width: 300px;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        
+        /* Animation de glissement */
+        transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* right au lieu de left */
+        
+        box-shadow: -2px 0 20px rgba(0, 0, 0, 0.2); /* Ombre à gauche */
+        z-index: 999;
+        padding-top: 80px;
+        overflow-y: auto;  /* Scroll si trop de liens */
+    }
+
+    /* LE SECOND SÉLECTEUR MAGIQUE : ~ (tilde)
+        
+        #menu-cache:checked ~ nav
+        
+        Différence avec + :
+        - + sélectionne le frère IMMÉDIATEMENT après
+        - ~ sélectionne TOUS les frères après (même s'il y a d'autres éléments entre)
+        
+        Ici : Quand checkbox cochée, affiche le nav
+                (même si le label est entre les deux) */
+    
+    #menu-cache:checked ~ nav {
+        right: 0;  /* GLISSE VERS LA DROITE */
+    }
+
+    /* ========================================
+        ÉTAPE 5 : STYLE DU MENU
+        ======================================== */
+    
+    nav ul {
+        list-style: none;
+    }
+
+    nav ul li {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 1.3rem 2rem;
+        color: #333;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+    }
+
+    /* Effet au survol */
+    nav ul li a:hover {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding-left: 2.5rem;  /* Décale légèrement à droite */
+        transform: translateX(5px);
+    }
+
+    /* ========================================
+        ÉTAPE 6 : L'OVERLAY (FOND SOMBRE)
+        ======================================== */
+    
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        
+        /* Caché par défaut */
+        opacity: 0;
+        visibility: hidden;
+        
+        transition: all 0.3s ease;
+        z-index: 998;  /* Sous le menu (999) mais au-dessus du contenu */
+    }
+
+    /* Affiche l'overlay quand le menu est ouvert */
+    #menu-cache:checked ~ .overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+ /* Cache la checkbox */
+ 

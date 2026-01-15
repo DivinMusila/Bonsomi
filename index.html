@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link href="bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <title>Collège Bonsomi</title>
+</head>
+<body>
+    <header>
+        <div id="titre-header">
+            <img src="Images/logo.jpg" alt="logo" width="40px" />
+            <h2>Collège Bonsomi</h2>
+        </div>
+
+        <div class="menu-hamburger">
+            <!-- La checkbox cachée -->
+            <input type="checkbox" id="menu-cache" />
+            
+            <!-- Le label qui sert d'icône hamburger -->
+            <label for="menu-cache" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            
+            <!-- Menu de navigation -->
+            <nav>
+                <ul>
+                    <li><a href="index.html">Acceuil</a></li>
+                    <li><a href="about.html">A propos</a></li>
+                    <li><a href="news.html">A la une</a></li>
+                    <li><a href="activities.html">Activités</a></li>
+                </ul>
+            </nav>       
+
+            <!-- Overlay pour fermer le menu en cliquant à côté -->
+            <label for="menu-cache" class="overlay"></label>
+        </div>
+         
+
+        <button>Se connecter</button>
+    </header>
+
+    <main>
+        <section id="hero">
+            <img src="Images/logo.jpg" alt="logo" width="40px" />
+            <h1>Bienvenue sur le site du Collège Bonsomi</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa nobis ullam, officiis sed ut nostrum reprehenderit nam, amet optio perferendis asperiores? Consequatur id eum corporis, inventore amet rem iure nobis?</p>
+            <button>En savoir plus</button>
+        </section>
+
+        <section id="presentation">
+            <div class="icons">
+                <img src="Images/Icons/livre.png" alt="livre" width="40px"/>
+                <p>methode d'enseignement sur</p>
+            </div>
+            <div class="icons">
+                <img src="Images/Icons/silhouette-dutilisateurs-multiples.png" alt="silhouette-dutilisateurs-multiples" width="40px"/>
+                <p>+1400 etudiants</p>
+            </div>
+            <div class="icons">
+                <img src="Images/Icons/verifie.png" alt="verifie" width="40px"/>
+                <p>100% réussite</p>
+            </div>
+        </section>
+
+        <section id="articles">
+            <!-- icone-->
+            <h3>à la une</h3>
+            <div class="article">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                <button>lire l'article</button>
+            </div>
+            <div class="article">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                <button>lire l'article</button>
+            </div>
+            <div class="article">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                <button>lire l'article</button>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="partie1">
+                <h2>A propos</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid, natus. Modi cum repellat ratione culpa, porro, doloribus nam aut maiores quasi rem dolore labore inventore!<br/>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis possimus minus at nam? Pariatur iusto possimus iure illo consequatur accusantium vitae nobis recusandae dolores nostrum explicabo eligendi, nam magnam nemo!</p>
+            </div>
+            <div class="newsletter">
+                <h2>Contactez-nous</h2>
+                <form>
+                    <input type="text" placeholder="Nom" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Votre message" required></textarea>
+                    <button type="submit">Envoyer</button>
+                </form>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Collège Bonsomi. Tous droits réservés.</p>
+        </footer>
+    </main>
+</body>
+</html>
